@@ -13,7 +13,7 @@ class Locale {
       save;
 
   void load(String locale) {
-    final texts = getTexts()[locale];
+    final texts = getTexts()[locale] ?? {};
     appname = texts['appname'] ?? '';
     complete = texts['complete'] ?? '';
     all = texts['all'] ?? '';

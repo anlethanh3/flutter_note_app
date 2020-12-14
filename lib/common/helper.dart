@@ -32,6 +32,6 @@ class Helper {
   Future<void> clear() async {
     final sp = await SharedPreferences.getInstance();
     await sp.remove(key);
-    todo = ToDo();
+    todo = null;
   }
 }

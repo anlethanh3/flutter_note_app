@@ -10,7 +10,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc(this.repository);
 
   @override
-  get initialState => AllState(repository.getAll());
+  get initialState => DefaultHomeState();
 
   @override
   Stream<HomeState> mapEventToState(HomeEvent event) async* {
@@ -28,7 +28,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       repository.updateWork(event.work);
       repository.saveToDo();
       yield getUpdateState();
-    }else if (event is DeleteWorkEvent) {
+    } else if (event is DeleteWorkEvent) {
       repository.deleteWork(event.work);
       repository.saveToDo();
       yield getUpdateState();
@@ -52,6 +52,8 @@ abstract class HomeEvent {}
 abstract class HomeState {}
 
 class InCompleteEvent extends HomeEvent {}
+
+class DefaultHomeState extends HomeState {}
 
 class InCompleteState extends HomeState {
   final ToDo toDo;
